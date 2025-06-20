@@ -5,12 +5,18 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
 
     // -- Core Library
-    const core_lib = b.addStaticLibrary(.{
-        .name = "core",
+    const core_mod = b.createModule(.{
         .root_source_file = b.path("lib/root.zig"),
         .target = target,
         .optimize = optimize,
     });
+
+    const core_lib = b.addLibrary(.{
+        .linkage = .static,
+        .name = "core",
+        .root_module = core_mod,
+    });
+
     b.installArtifact(core_lib);
     // Core Library --
 
@@ -21,9 +27,6 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    // b.installArtifact(core_test_exe);
-
-    // core_tests.root_module.addImport("core", core_lib.root_module);
 
     const run_artifact = b.addRunArtifact(core_test_exe);
     const run_step = b.step("test", "Run 'Core' tests");
