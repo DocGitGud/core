@@ -14,8 +14,6 @@ pub fn build(b: *std.Build) void {
     const core_lib = b.addStaticLibrary(.{
         .name = "core",
         .root_module = core_mod,
-        .target = target,
-        .optimize = optimize,
     });
 
     b.installArtifact(core_lib);
