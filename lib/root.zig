@@ -1,4 +1,4 @@
-const core = @import("core/base64.zig");
+pub const core = @import("core/base64.zig");
 
 test {
     _ = core;
