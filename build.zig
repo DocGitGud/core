@@ -5,7 +5,7 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
 
     // -- Core Library
-    const core_mod = b.addModule(.{
+    const core_mod = b.addModule("core", .{
         .root_source_file = b.path("lib/root.zig"),
         .target = target,
         .optimize = optimize,
