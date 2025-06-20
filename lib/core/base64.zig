@@ -4,6 +4,7 @@ const expect = std.testing.expect;
 const base64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 pub fn encode(input: []const u8, allocator: std.mem.Allocator) ![]u8 {
+    std.debug.print("input: {s}", .{input});
     if (input.len == 0) {
         return "";
     }
@@ -51,6 +52,7 @@ pub fn encode(input: []const u8, allocator: std.mem.Allocator) ![]u8 {
 }
 
 pub fn decode(input: []const u8, allocator: std.mem.Allocator) ![]u8 {
+    std.debug.print("input: {s}", .{input});
     if (input.len == 0) {
         return "";
     }
