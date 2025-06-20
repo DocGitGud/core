@@ -6,7 +6,6 @@ pub fn build(b: *std.Build) void {
 
     // -- Core Library
     const core_mod = b.createModule(.{
-        .name = "core",
         .root_source_file = b.path("lib/root.zig"),
         .target = target,
         .optimize = optimize,
