@@ -5,16 +5,17 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
 
     // -- Core Library
-    const core_mod = b.createModule(.{
+    const core_mod = b.addModule(.{
         .root_source_file = b.path("lib/root.zig"),
         .target = target,
         .optimize = optimize,
     });
 
-    const core_lib = b.addLibrary(.{
-        .linkage = .static,
+    const core_lib = b.addStaticLibrary(.{
         .name = "core",
         .root_module = core_mod,
+        .target = target,
+        .optimize = optimize,
     });
 
     b.installArtifact(core_lib);
