@@ -1,5 +1,5 @@
-pub const core = @import("core/base64.zig");
+pub const base64 = @import("core/base64.zig");
 
 test {
-    _ = core;
+    _ = base64;
 }
